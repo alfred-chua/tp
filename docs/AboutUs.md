@@ -17,13 +17,14 @@ You can reach us at the email `arnavj[at]comp.nus.edu.sg`
 [[github](https://github.com/alfred-chua)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: UI
 
-### Jane Doe
+### Mathew Paul
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/mathew270.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/mathew270)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
