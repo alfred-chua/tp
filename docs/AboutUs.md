@@ -29,28 +29,30 @@ You can reach us at the email `arnavj[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
-
 ### Shubham Choudhary
 
 <img src="images/shubham-1417.png" width="200px">
 
 [[github](http://github.com/shubham-1417)]
 
+* Role: Developer
+* Responsibilities: Data
+
+### Rahul Vijay
+
+<img src="images/Rahulvira.png" width="200px">
+
+[[github](http://github.com/Rahulvira)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: Data
 
 ### Arnav Jhajharia
 
 <img src="images/arnav-jhajharia.png" width="200px">
 
 [[github](http://github.com/Arnav-Jhajharia)]
-
 
 * Role: Developer
 * Responsibilities: Backend and Project Management
