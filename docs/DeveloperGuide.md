@@ -262,13 +262,16 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
+* has a need to manage a significant number of patient records in a clinic setting
+* prefer desktop apps over other types for data security and offline access
+* can type fast for efficient data entry
+* prefers typing to mouse interactions for speed
 * is reasonably comfortable using CLI apps
+* needs to track medical information, medicines, and patient visits
+* requires quick access to patient contact details for communication
+* needs to manage patient categories and medical histories
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage clinic operations and patient records faster than a typical mouse/GUI driven app, with specialized features for healthcare management
 
 
 ### User stories
@@ -277,56 +280,228 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| `* * *`  | clinic manager                             | see usage instructions         | refer to instructions when I forget how to use the App                 |
+| `* * *`  | clinic manager                             | add a new patient              | maintain up-to-date patient records                                    |
+| `* * *`  | clinic manager                             | delete a patient               | remove entries that are no longer needed                               |
+| `* * *`  | clinic manager                             | find a patient by name         | locate patient details without having to go through the entire list    |
+| `* * *`  | clinic manager                             | view patient addresses         | deliver medicines to patients                                          |
+| `* * *`  | clinic manager                             | view patient contact details   | contact patients when needed                                           |
+| `* * *`  | clinic manager                             | view patient visit schedules   | keep track of which patients visit on certain days                     |
+| `* * *`  | clinic manager                             | view medicine distribution     | track which patients are taking which medicines                        |
+| `* * *`  | clinic manager                             | edit patient records           | update information when changes are required                           |
+| `* * *`  | clinic manager                             | record patient allergies       | avoid prescribing medicines that may cause adverse reactions           |
+| `* * *`  | clinic manager                             | assign patient categories      | tailor communication and services (chronic illness, elderly, children) |
+| `* * *`  | clinic manager                             | archive inactive patients      | keep active patient list uncluttered                                   |
+| `* * *`  | clinic manager                             | apply batch actions            | update many patient records in one shot (tag, assign doctor, delete)   |
+| `* * *`  | fast-typing user                          | use keyboard shortcuts         | work without touching the mouse                                        |
+| `* * *`  | fast-typing user                          | use command history            | quickly repeat previous commands                                       |
+| `* * *`  | fast-typing user                          | use custom command aliases     | streamline my workflow                                                 |
+| `* * *`  | clinic manager                             | perform fuzzy search           | find patients even with partial or incorrect information               |
+| `* *`    | clinic manager                             | hide private patient details   | minimize chance of someone else seeing sensitive information           |
+| `* *`    | clinic manager                             | sort patients by name          | locate a patient easily in large lists                                 |
+| `* *`    | clinic manager                             | filter patients by medicine    | see which patients are taking specific medications                     |
+| `* *`    | clinic manager                             | filter patients by doctor      | prepare reports for specific doctors                                   |
+| `* *`    | clinic manager                             | filter patients by location    | plan medicine deliveries in surrounding areas                          |
+| `*`      | clinic manager                             | generate usage reports         | forecast future inventory needs                                        |
+| `*`      | clinic manager                             | export patient data            | share reports with external stakeholders                               |
+| `*`      | clinic manager                             | import patient records         | avoid retyping existing data from spreadsheets                         |
+| `*`      | clinic manager                             | detect duplicate records       | maintain clean and consistent data                                     |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `CLInic` and the **Actor** is the `clinic manager`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a new patient**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. Clinic manager requests to add a new patient
+2. CLInic prompts for patient details (name, phone, address, medical history, allergies, assigned doctor)
+3. Clinic manager enters the patient information
+4. CLInic adds the patient to the system
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The patient information is incomplete.
+
+  * 2a1. CLInic shows an error message indicating required fields.
+  
+    Use case resumes at step 2.
+
+* 3a. The patient already exists in the system.
+
+  * 3a1. CLInic shows an error message about duplicate patient.
+  
+    Use case ends.
+
+**Use case: Find a patient by name**
+
+**MSS**
+
+1. Clinic manager requests to find a patient by name
+2. CLInic prompts for the patient name
+3. Clinic manager enters the patient name (can be partial)
+4. CLInic shows matching patients
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The search term is empty.
+
+  * 2a1. CLInic shows an error message.
+  
+    Use case resumes at step 1.
+
+* 3a. No patients match the search term.
+
+  * 3a1. CLInic shows "No patients found" message.
+  
+    Use case ends.
+
+**Use case: Assign medicine to a patient**
+
+**MSS**
+
+1. Clinic manager requests to assign medicine to a patient
+2. CLInic prompts for patient identification
+3. Clinic manager enters patient name or ID
+4. CLInic shows patient details
+5. Clinic manager requests to add medicine
+6. CLInic prompts for medicine details
+7. Clinic manager enters medicine name and dosage
+8. CLInic checks for potential allergies or drug interactions
+9. CLInic adds the medicine to the patient's record
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. Patient not found.
+
+  * 3a1. CLInic shows an error message.
+  
+    Use case resumes at step 1.
+
+* 8a. Potential allergy conflict detected.
+
+  * 8a1. CLInic shows a warning about the allergy conflict.
+  * 8a2. Clinic manager confirms to proceed or cancels.
+  
+    Use case resumes at step 6 if confirmed, ends if cancelled.
+
+* 8b. Potential drug interaction detected.
+
+  * 8b1. CLInic shows a warning about the drug interaction.
+  * 8b2. Clinic manager confirms to proceed or cancels.
+  
+    Use case resumes at step 6 if confirmed, ends if cancelled.
+
+**Use case: Apply batch actions to multiple patients**
+
+**MSS**
+
+1. Clinic manager requests to apply batch actions
+2. CLInic prompts for selection criteria (filter by doctor, medicine, category, etc.)
+3. Clinic manager enters the filter criteria
+4. CLInic shows matching patients
+5. Clinic manager requests to apply action (tag, assign doctor, delete, etc.)
+6. CLInic prompts for action details
+7. Clinic manager enters the action details
+8. CLInic applies the action to all selected patients
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. No patients match the filter criteria.
+
+  * 3a1. CLInic shows "No patients found" message.
+  
+    Use case ends.
+
+* 5a. Clinic manager cancels the batch action.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 7a. Invalid action details provided.
 
-    * 3a1. AddressBook shows an error message.
+  * 7a1. CLInic shows an error message.
+  
+    Use case resumes at step 6.
 
-      Use case resumes at step 2.
+**Use case: Archive an inactive patient**
 
-*{More to be added}*
+**MSS**
+
+1. Clinic manager requests to archive a patient
+2. CLInic prompts for patient identification
+3. Clinic manager enters patient name or ID
+4. CLInic shows patient details
+5. Clinic manager confirms the archiving action
+6. CLInic moves the patient to archived status
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. Patient not found.
+
+  * 3a1. CLInic shows an error message.
+  
+    Use case resumes at step 1.
+
+* 5a. Clinic manager cancels the archiving.
+
+  Use case ends.
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1. **Platform Independence**: Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 
-*{More to be added}*
+2. **Performance**: Should be able to hold up to 1000 patients without a noticeable sluggishness in performance for typical usage.
+
+3. **Usability**: A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+
+4. **Data Security**: Patient medical information should be stored locally and not transmitted over the network to ensure privacy and compliance with healthcare data protection requirements.
+
+5. **Reliability**: The system should maintain data integrity even if the application crashes unexpectedly, with automatic saving of patient records.
+
+6. **Scalability**: The system should handle growth from small clinics (50-100 patients) to medium-sized clinics (500-1000 patients) without significant performance degradation.
+
+7. **Accessibility**: The system should be usable by healthcare professionals with varying levels of technical expertise, with clear error messages and help documentation.
+
+8. **Response Time**: Common operations (add patient, search patient, view details) should complete within 2 seconds for typical usage scenarios.
+
+9. **Data Validation**: The system should validate medical information (allergies, drug interactions) and provide appropriate warnings to prevent medical errors.
+
+10. **Backup and Recovery**: The system should support data backup and recovery mechanisms to prevent loss of critical patient information.
+
+11. **Offline Functionality**: The system should work completely offline to ensure availability in areas with poor internet connectivity.
+
+12. **Memory Usage**: The system should not consume excessive memory resources, suitable for typical clinic computer systems.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Patient Record**: A comprehensive file containing a patient's personal information, medical history, current medications, allergies, and assigned healthcare provider
+* **Medical History**: A record of past illnesses, treatments, surgeries, and medical conditions for a patient
+* **Allergy**: An adverse reaction to specific substances (medicines, foods, environmental factors) that should be avoided for a patient
+* **Drug Interaction**: A situation where two or more medicines interact with each other, potentially causing harmful effects
+* **Batch Action**: An operation that can be applied to multiple patients simultaneously (e.g., tagging, assigning doctor, archiving)
+* **Patient Category**: A classification system for patients (e.g., chronic illness, elderly, children) used for tailored care and communication
+* **Archived Patient**: A patient record that has been moved to inactive status but can be reactivated if needed
+* **Fuzzy Search**: A search method that can find results even with partial, misspelled, or incomplete search terms
+* **Command Alias**: A shortened or alternative command name that performs the same function as the full command
+* **Medicine Distribution**: The tracking of which patients are currently taking specific medications
+* **Visit Schedule**: A record of when patients visit the clinic for appointments or treatments
+* **Private Patient Detail**: Sensitive medical information that should not be shared with unauthorized personnel
+* **Clinic Manager**: The primary user of the system who manages patient records and clinic operations
+* **Healthcare Provider**: A doctor, nurse, or other medical professional assigned to care for specific patients
+* **Inventory Management**: The tracking of medicine stock levels and reorder requirements
+* **Patient ID**: A unique identifier assigned to each patient for easy reference and data management
 
 --------------------------------------------------------------------------------------------------------------------
 
