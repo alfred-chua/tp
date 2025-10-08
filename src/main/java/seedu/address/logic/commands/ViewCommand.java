@@ -23,7 +23,7 @@ public class ViewCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_View_PERSON_SUCCESS = "Viewed Patient: %1$s";
+    public static final String MESSAGE_VIEW_PERSON_SUCCESS = "Viewed Patient: %1$s";
 
     private final Index targetIndex;
 
@@ -41,7 +41,7 @@ public class ViewCommand extends Command {
         }
 
         Person personToView = lastShownList.get(targetIndex.getZeroBased());
-        return new CommandResult(String.format(MESSAGE_View_PERSON_SUCCESS, Messages.format(personToView)));
+        return new CommandResult(String.format(MESSAGE_VIEW_PERSON_SUCCESS, Messages.format(personToView)));
     }
 
     @Override
