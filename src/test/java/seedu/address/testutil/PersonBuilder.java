@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.medicine.Medicine;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Doctor;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
