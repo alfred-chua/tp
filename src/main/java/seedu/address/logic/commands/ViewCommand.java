@@ -12,22 +12,22 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Views a person identified using it's displayed index from the address book.
  */
-public class DeleteCommand extends Command {
+public class ViewCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete";
+    public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+            + ": Views the person identified by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Patient: %1$s";
+    public static final String MESSAGE_VIEW_PERSON_SUCCESS = "Viewed Patient: %1$s";
 
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public ViewCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -40,9 +40,8 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
+        Person personToView = lastShownList.get(targetIndex.getZeroBased());
+        return new CommandResult(String.format(MESSAGE_VIEW_PERSON_SUCCESS, Messages.format(personToView)));
     }
 
     @Override
@@ -52,12 +51,12 @@ public class DeleteCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof ViewCommand)) {
             return false;
         }
 
-        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        ViewCommand otherViewCommand = (ViewCommand) other;
+        return targetIndex.equals(otherViewCommand.targetIndex);
     }
 
     @Override
@@ -67,3 +66,4 @@ public class DeleteCommand extends Command {
                 .toString();
     }
 }
+
