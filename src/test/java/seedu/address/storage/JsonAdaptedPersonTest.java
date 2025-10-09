@@ -80,7 +80,7 @@ public class JsonAdaptedPersonTest {
                 INVALID_PHONE,
                 VALID_EMAIL,
                 VALID_ADDRESS,
-                VALID_DOCTOR
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );

@@ -128,7 +128,6 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
-                .add("doctor", doctor)
                 .add("tags", tags)
                 .add("medicines", medicines)
                 .toString();
