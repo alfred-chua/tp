@@ -327,13 +327,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The patient information is incomplete.
 
   * 2a1. CLInic shows an error message indicating required fields.
-  
+
     Use case resumes at step 2.
 
 * 3a. The patient already exists in the system.
 
   * 3a1. CLInic shows an error message about duplicate patient.
-  
+
     Use case ends.
 
 **Use case: Find a patient by name**
@@ -352,13 +352,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The search term is empty.
 
   * 2a1. CLInic shows an error message.
-  
+
     Use case resumes at step 1.
 
 * 3a. No patients match the search term.
 
   * 3a1. CLInic shows "No patients found" message.
-  
+
     Use case ends.
 
 **Use case: Assign medicine to a patient**
@@ -382,21 +382,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. Patient not found.
 
   * 3a1. CLInic shows an error message.
-  
+
     Use case resumes at step 1.
 
 * 8a. Potential allergy conflict detected.
 
   * 8a1. CLInic shows a warning about the allergy conflict.
   * 8a2. Clinic manager confirms to proceed or cancels.
-  
+
     Use case resumes at step 6 if confirmed, ends if cancelled.
 
 * 8b. Potential drug interaction detected.
 
   * 8b1. CLInic shows a warning about the drug interaction.
   * 8b2. Clinic manager confirms to proceed or cancels.
-  
+
     Use case resumes at step 6 if confirmed, ends if cancelled.
 
 **Use case: Apply batch actions to multiple patients**
@@ -419,7 +419,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. No patients match the filter criteria.
 
   * 3a1. CLInic shows "No patients found" message.
-  
+
     Use case ends.
 
 * 5a. Clinic manager cancels the batch action.
@@ -429,7 +429,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 7a. Invalid action details provided.
 
   * 7a1. CLInic shows an error message.
-  
+
     Use case resumes at step 6.
 
 **Use case: Archive an inactive patient**
@@ -450,7 +450,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. Patient not found.
 
   * 3a1. CLInic shows an error message.
-  
+
     Use case resumes at step 1.
 
 * 5a. Clinic manager cancels the archiving.
