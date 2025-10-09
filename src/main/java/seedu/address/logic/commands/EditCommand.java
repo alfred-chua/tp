@@ -105,7 +105,8 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Set<Medicine> updatedMedicines = personToEdit.getMedicines(); // Medicines are preserved during edit
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedDoctor, updatedTags, updatedMedicines);
+        return new Person(updatedName, updatedPhone,
+                          updatedEmail, updatedAddress, updatedDoctor, updatedTags, updatedMedicines);
 
     }
 

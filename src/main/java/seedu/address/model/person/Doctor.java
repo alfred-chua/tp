@@ -10,6 +10,11 @@ import static java.util.Objects.requireNonNull;
 public class Doctor {
     public final String name;
 
+    /**
+     * Constructs an {@code Doctor}.
+     *
+     * @param doctor A doctor's name.
+     */
     public Doctor(String doctor) {
         requireNonNull(doctor);
         name = doctor;
