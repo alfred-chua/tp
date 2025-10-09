@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.medicine.Medicine;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Doctor;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -21,11 +22,12 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-
+    public static final String DEFAULT_DOCTOR = "James";
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private Doctor doctor;
     private Set<Tag> tags;
     private Set<Medicine> medicines;
 
@@ -37,6 +39,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        doctor = new Doctor(DEFAULT_DOCTOR);
         tags = new HashSet<>();
         medicines = new HashSet<>();
     }
@@ -49,6 +52,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        doctor = personToCopy.getDoctor();
         tags = new HashSet<>(personToCopy.getTags());
         medicines = new HashSet<>(personToCopy.getMedicines());
     }
@@ -101,8 +105,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Doctor} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withDoctor(String doctor) {
+        this.doctor = new Doctor(doctor);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, medicines);
+        return new Person(name, phone, email, address, doctor, tags, medicines);
     }
 
 }

@@ -24,18 +24,21 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final Doctor doctor;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Medicine> medicines = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Medicine> medicines) {
+    public Person(Name name, Phone phone, Email email,
+                  Address address, Doctor doctor, Set<Tag> tags, Set<Medicine> medicines) {
         requireAllNonNull(name, phone, email, address, tags, medicines);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.doctor = doctor;
         this.tags.addAll(tags);
         this.medicines.addAll(medicines);
     }
@@ -54,6 +57,10 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
     }
 
     /**

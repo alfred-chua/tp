@@ -28,7 +28,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
-
+    private static final String VALID_DOCTOR = BENSON.getDoctor().toString();
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
@@ -50,6 +50,7 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 VALID_EMAIL,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -64,6 +65,7 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 VALID_EMAIL,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -78,6 +80,7 @@ public class JsonAdaptedPersonTest {
                 INVALID_PHONE,
                 VALID_EMAIL,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -92,6 +95,7 @@ public class JsonAdaptedPersonTest {
                 null,
                 VALID_EMAIL,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -106,6 +110,7 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 INVALID_EMAIL,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -120,6 +125,7 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 null,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -134,6 +140,7 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 VALID_EMAIL,
                 INVALID_ADDRESS,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -148,6 +155,7 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 VALID_EMAIL,
                 null,
+                VALID_DOCTOR,
                 VALID_TAGS,
                 VALID_MEDICINES
         );
@@ -164,9 +172,11 @@ public class JsonAdaptedPersonTest {
                 VALID_PHONE,
                 VALID_EMAIL,
                 VALID_ADDRESS,
+                VALID_DOCTOR,
                 invalidTags,
                 VALID_MEDICINES
         );
         assertThrows(IllegalValueException.class, person::toModelType);
     }
+
 }
