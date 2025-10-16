@@ -82,10 +82,18 @@ public class ParserUtil {
         return new Address(trimmedAddress);
     }
 
+    /**
+     * Parses a {@code String doctor} into an {@code Doctor}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code doctor} is invalid.
+     */
     public static Doctor parseDoctor(String doctor) throws ParseException{
         requireNonNull(doctor);
         String trimmedDoctor = doctor.trim();
-        // no checks for now
+        if (!Doctor.isValidDoctor(trimmedDoctor)) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
         return new Doctor(trimmedDoctor);
     }
 

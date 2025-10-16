@@ -20,7 +20,7 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
 
-    public static final Doctor SAMPLE_DOCTOR = new Doctor("Dr.Sample");
+    public static final Doctor SAMPLE_DOCTOR = new Doctor("William Reed");
 
     public static Person[] getSamplePersons() {
         return new Person[] {
