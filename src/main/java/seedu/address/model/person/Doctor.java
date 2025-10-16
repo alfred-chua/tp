@@ -9,12 +9,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 
 public class Doctor {
-    public final String name;
-
     public static final String MESSAGE_CONSTRAINTS =
             "Doctor names should only contain alphanumeric characters and spaces";
 
     public static final String VALIDATION_REGEX = "^([\\p{Alnum}][\\p{Alnum} ]*)?$";
+
+    public final String name;
 
     /**
      * Constructs an {@code Doctor}.

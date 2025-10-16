@@ -88,7 +88,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code doctor} is invalid.
      */
-    public static Doctor parseDoctor(String doctor) throws ParseException{
+    public static Doctor parseDoctor(String doctor) throws ParseException {
         requireNonNull(doctor);
         String trimmedDoctor = doctor.trim();
         if (!Doctor.isValidDoctor(trimmedDoctor)) {
