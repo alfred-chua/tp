@@ -112,6 +112,7 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
+                && doctor.equals(otherPerson.doctor)
                 && tags.equals(otherPerson.tags)
                 && medicines.equals(otherPerson.medicines);
     }
@@ -129,6 +130,7 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
+                .add("doctor", doctor)
                 .add("tags", tags)
                 .add("medicines", medicines)
                 .toString();
