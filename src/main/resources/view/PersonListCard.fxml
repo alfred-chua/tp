@@ -40,9 +40,9 @@
         <Label fx:id="address" styleClass="contact_value" text="\$address" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Label text="Email:" styleClass="contact_label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Label fx:id="email" styleClass="contact_value" text="\$email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="Doctor:" styleClass="contact_label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label fx:id="doctor" styleClass="contact_value" text="\$doctor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       </GridPane>
-
-      <Label fx:id="doctor" styleClass="doctor_label" text="\$doctor" />
 
       <FlowPane fx:id="medicines" />
 
