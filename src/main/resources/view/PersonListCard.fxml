@@ -28,6 +28,7 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="tags" />
+
       <GridPane fx:id="contactInfoGrid" hgap="10" vgap="5">
         <columnConstraints>
           <ColumnConstraints hgrow="NEVER" minWidth="80" />
@@ -40,9 +41,11 @@
         <Label text="Email:" styleClass="contact_label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Label fx:id="email" styleClass="contact_value" text="\$email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </GridPane>
-      
-      <Label styleClass="cell_small_label" text="Medicines:" />
+
+      <Label fx:id="doctor" styleClass="doctor_label" text="\$doctor" />
+
       <FlowPane fx:id="medicines" />
+
     </VBox>
   </GridPane>
 </HBox>
