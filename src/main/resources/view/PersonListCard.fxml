@@ -28,12 +28,24 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="doctor" styleClass="cell_small_label" text="\$doctor" />
-      <Label styleClass="cell_small_label" text="Medicines:" />
+
+      <GridPane fx:id="contactInfoGrid" hgap="10" vgap="5">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" minWidth="80" />
+          <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <Label text="Phone:" styleClass="contact_label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Label fx:id="phone" styleClass="contact_value" text="\$phone" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="Address:" styleClass="contact_label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label fx:id="address" styleClass="contact_value" text="\$address" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Email:" styleClass="contact_label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="email" styleClass="contact_value" text="\$email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      </GridPane>
+
+      <Label fx:id="doctor" styleClass="doctor_label" text="\$doctor" />
+
       <FlowPane fx:id="medicines" />
+
     </VBox>
   </GridPane>
 </HBox>
