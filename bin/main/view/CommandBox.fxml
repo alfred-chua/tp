@@ -10,11 +10,11 @@
   <VBox spacing="3">
     <HBox alignment="CENTER_LEFT" spacing="5">
       <Label text=">" styleClass="command-prompt"/>
-      <TextField fx:id="commandTextField" onAction="#handleCommandEntered" 
-                 promptText="Enter command here..." styleClass="command-input" 
+      <TextField fx:id="commandTextField" onAction="#handleCommandEntered"
+                 promptText="Enter command here..." styleClass="command-input"
                  HBox.hgrow="ALWAYS"/>
     </HBox>
-    <Label fx:id="commandHint" text="Type 'help' for available commands" 
+    <Label fx:id="commandHint" text="Type 'help' for available commands"
            styleClass="command-hint"/>
   </VBox>
 </StackPane>
