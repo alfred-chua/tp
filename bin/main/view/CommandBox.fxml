@@ -2,8 +2,20 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
 
 <StackPane styleClass="stack-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-  <TextField fx:id="commandTextField" onAction="#handleCommandEntered" promptText="Enter command here..."/>
+  <VBox spacing="3">
+    <HBox alignment="CENTER_LEFT" spacing="5">
+      <Label text=">" styleClass="command-prompt"/>
+      <TextField fx:id="commandTextField" onAction="#handleCommandEntered" 
+                 promptText="Enter command here..." styleClass="command-input" 
+                 HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <Label fx:id="commandHint" text="Type 'help' for available commands" 
+           styleClass="command-hint"/>
+  </VBox>
 </StackPane>
 

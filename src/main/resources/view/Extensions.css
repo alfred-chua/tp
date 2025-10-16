@@ -3,6 +3,10 @@
     -fx-text-fill: #d06651 !important; /* The error class should always override the default text-fill style */
 }
 
+.success {
+    -fx-text-fill: #4CAF50 !important; /* Success color for command input */
+}
+
 .list-cell:empty {
     /* Empty cells will not have alternating colours */
     -fx-background: #383838;
@@ -17,4 +21,42 @@
 
 .tooltip-text {
     -fx-text-fill: white;
+}
+
+/* Command feedback enhancements */
+.status-indicator {
+    -fx-stroke: #666666;
+    -fx-stroke-width: 1;
+}
+
+.status-label {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.command-prompt {
+    -fx-text-fill: #4CAF50;
+    -fx-font-size: 12pt;
+    -fx-font-family: "Consolas", "Monaco", monospace;
+    -fx-font-weight: bold;
+}
+
+.command-input {
+    -fx-background-color: transparent;
+    -fx-border-color: #666666;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 5 8 5 8;
+    -fx-max-width: infinity;
+}
+
+.command-input:focused {
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 2;
+}
+
+.command-hint {
+    -fx-text-fill: #888888;
+    -fx-font-size: 9pt;
+    -fx-font-style: italic;
 }
