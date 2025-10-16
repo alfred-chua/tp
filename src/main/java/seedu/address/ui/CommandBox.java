@@ -67,12 +67,13 @@ public class CommandBox extends UiPart<Region> {
         if (text.isEmpty()) {
             commandHint.setText("Type 'help' for available commands");
         } else if (text.startsWith("add")) {
-            commandHint.setText("Add a new patient: add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]... [med/MEDICINE]...");
+            commandHint.setText("Add a new patient: add n/NAME p/PHONE e/EMAIL a/ADDRESS [d/DOCTOR] "
+                    + "[t/TAG]... [med/MEDICINE]...");
         } else if (text.startsWith("delete")) {
             commandHint.setText("Delete a patient: delete INDEX");
         } else if (text.startsWith("edit")) {
             commandHint.setText("Edit a patient: edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] "
-                    + "[a/ADDRESS] [t/TAG]... [med/MEDICINE]...");
+                    + "[a/ADDRESS] [d/DOCTOR] [t/TAG]... [med/MEDICINE]...");
         } else if (text.startsWith("find")) {
             commandHint.setText("Find patients: find KEYWORD [MORE_KEYWORDS]");
         } else if (text.startsWith("list")) {

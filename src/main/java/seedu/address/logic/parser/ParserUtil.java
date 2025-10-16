@@ -92,7 +92,7 @@ public class ParserUtil {
         requireNonNull(doctor);
         String trimmedDoctor = doctor.trim();
         if (!Doctor.isValidDoctor(trimmedDoctor)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Doctor.MESSAGE_CONSTRAINTS);
         }
         return new Doctor(trimmedDoctor);
     }

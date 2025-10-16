@@ -5,6 +5,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DOCTOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -18,6 +19,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.medicine.Medicine;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,11 +32,12 @@ public class EditCommandParser implements Parser<EditCommand> {
      * and returns an EditCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
+    @Override
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
-                        PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_DOCTOR, PREFIX_TAG);
+                        PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_DOCTOR, PREFIX_TAG, PREFIX_MEDICINE);
 
         Index index;
 
@@ -65,6 +68,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setDoctor(ParserUtil.parseDoctor(argMultimap.getValue(PREFIX_DOCTOR).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+        parseMedicinesForEdit(argMultimap.getAllValues(PREFIX_MEDICINE)).ifPresent(editPersonDescriptor::setMedicines);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
@@ -86,6 +90,22 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
+    }
+
+    /**
+     * Parses {@code Collection<String> medicines} into a {@code Set<Medicine>} if {@code medicines} is non-empty.
+     * If {@code medicines} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set<Medicine>} containing zero medicines.
+     */
+    private Optional<Set<Medicine>> parseMedicinesForEdit(Collection<String> medicines) throws ParseException {
+        assert medicines != null;
+
+        if (medicines.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> medicineSet = medicines.size() == 1 && medicines.contains("")
+                ? Collections.emptySet() : medicines;
+        return Optional.of(ParserUtil.parseMedicines(medicineSet));
     }
 
 }

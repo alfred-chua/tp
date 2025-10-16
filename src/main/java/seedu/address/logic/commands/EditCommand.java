@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DOCTOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -47,7 +48,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_DOCTOR + "DOCTOR] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_MEDICINE + "MEDICINE]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -105,7 +107,7 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Doctor updatedDoctor = editPersonDescriptor.getDoctor().orElse(personToEdit.getDoctor());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        Set<Medicine> updatedMedicines = personToEdit.getMedicines(); // Medicines are preserved during edit
+        Set<Medicine> updatedMedicines = editPersonDescriptor.getMedicines().orElse(personToEdit.getMedicines());
 
         return new Person(updatedName, updatedPhone,
                           updatedEmail, updatedAddress, updatedDoctor, updatedTags, updatedMedicines);
@@ -147,6 +149,7 @@ public class EditCommand extends Command {
         private Address address;
         private Doctor doctor;
         private Set<Tag> tags;
+        private Set<Medicine> medicines;
 
         public EditPersonDescriptor() {}
 
@@ -161,13 +164,14 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setDoctor(toCopy.doctor);
             setTags(toCopy.tags);
+            setMedicines(toCopy.medicines);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, doctor, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, doctor, tags, medicines);
         }
 
         public void setName(Name name) {
@@ -228,6 +232,23 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code medicines} to this object's {@code medicines}.
+         * A defensive copy of {@code medicines} is used internally.
+         */
+        public void setMedicines(Set<Medicine> medicines) {
+            this.medicines = (medicines != null) ? new HashSet<>(medicines) : null;
+        }
+
+        /**
+         * Returns an unmodifiable medicine set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code medicines} is null.
+         */
+        public Optional<Set<Medicine>> getMedicines() {
+            return (medicines != null) ? Optional.of(Collections.unmodifiableSet(medicines)) : Optional.empty();
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -245,7 +266,8 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(doctor, otherEditPersonDescriptor.doctor)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(medicines, otherEditPersonDescriptor.medicines);
         }
 
         @Override
@@ -257,6 +279,7 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("doctor", doctor)
                     .add("tags", tags)
+                    .add("medicines", medicines)
                     .toString();
         }
     }
