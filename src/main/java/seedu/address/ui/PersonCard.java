@@ -42,6 +42,8 @@ public class PersonCard extends UiPart<Region> {
     private Label doctor;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane medicines;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -57,6 +59,31 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+                .forEach(tag -> {
+                    Label tagLabel = new Label(tag.tagName);
+                    // Add visual styling for different tag types
+                    if (tag.tagName.toLowerCase().contains("allergy")) {
+                        tagLabel.setStyle("-fx-background-color: #ffebee; -fx-text-fill: #c62828; "
+                                + "-fx-padding: 2 6 2 6; -fx-background-radius: 3;");
+                    } else if (tag.tagName.toLowerCase().contains("chronic")
+                            || tag.tagName.toLowerCase().contains("elderly")) {
+                        tagLabel.setStyle("-fx-background-color: #fff3e0; -fx-text-fill: #ef6c00; "
+                                + "-fx-padding: 2 6 2 6; -fx-background-radius: 3;");
+                    } else {
+                        tagLabel.setStyle("-fx-background-color: #e3f2fd; -fx-text-fill: #1565c0; "
+                                + "-fx-padding: 2 6 2 6; -fx-background-radius: 3;");
+                    }
+                    tags.getChildren().add(tagLabel);
+                });
+
+        // Display medicines with special styling
+        person.getMedicines().stream()
+                .sorted(Comparator.comparing(medicine -> medicine.medicineName))
+                .forEach(medicine -> {
+                    Label medicineLabel = new Label(medicine.medicineName);
+                    medicineLabel.setStyle("-fx-background-color: #e8f5e8; -fx-text-fill: #2e7d32; "
+                            + "-fx-padding: 2 6 2 6; -fx-background-radius: 3;");
+                    medicines.getChildren().add(medicineLabel);
+                });
     }
 }
