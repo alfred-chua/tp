@@ -34,13 +34,13 @@ public class MedCommandTest {
 
         String expectedMessage;
         if (personToView.getMedicines().isEmpty()) {
-            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS, 
+            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS,
                     personToView.getName(), MedCommand.MESSAGE_NO_MEDICINES);
         } else {
             StringBuilder medicineList = new StringBuilder();
-            personToView.getMedicines().forEach(medicine -> 
-                medicineList.append("• ").append(medicine.toString()).append("\n"));
-            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS, 
+            personToView.getMedicines().forEach(medicine ->
+                    medicineList.append("• ").append(medicine.toString()).append("\n"));
+            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS,
                     personToView.getName(), medicineList.toString().trim());
         }
 
@@ -66,13 +66,13 @@ public class MedCommandTest {
 
         String expectedMessage;
         if (personToView.getMedicines().isEmpty()) {
-            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS, 
+            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS,
                     personToView.getName(), MedCommand.MESSAGE_NO_MEDICINES);
         } else {
             StringBuilder medicineList = new StringBuilder();
-            personToView.getMedicines().forEach(medicine -> 
-                medicineList.append("• ").append(medicine.toString()).append("\n"));
-            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS, 
+            personToView.getMedicines().forEach(medicine ->
+                    medicineList.append("• ").append(medicine.toString()).append("\n"));
+            expectedMessage = String.format(MedCommand.MESSAGE_VIEW_MEDICINE_SUCCESS,
                     personToView.getName(), medicineList.toString().trim());
         }
 
