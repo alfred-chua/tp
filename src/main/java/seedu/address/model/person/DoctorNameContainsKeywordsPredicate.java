@@ -33,8 +33,8 @@ public class DoctorNameContainsKeywordsPredicate implements Predicate<Person> {
             return false;
         }
 
-        DoctorNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate
-                = (DoctorNameContainsKeywordsPredicate) other;
+        DoctorNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate =
+                (DoctorNameContainsKeywordsPredicate) other;
         return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
     }
 
